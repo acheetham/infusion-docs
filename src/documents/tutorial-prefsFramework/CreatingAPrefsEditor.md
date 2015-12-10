@@ -767,9 +767,55 @@ radioVolume: {
 }
 ```
 
+## Creating an Enactor ##
+
+So we're starting to build up a preferences editor for our flying car,
+but nothing happens when we set our preferences.
+That's where Enactors come in.
+
+An [Enactor](../Enactors.md) is an Infusion component that acts upon changes to a user preference.
+An Enactor for the heated seats preference would actually turn on the heated seats if that's what
+the driver's preference is. An Enactor for the radio volume preference would actually adjust the
+radio's volume to the preferred value set by the driver.
+
+It's probably becoming clear that unlike Panels (which have a common structure,
+since they all present some controls, which are tied to the model), Enactors can be very different
+from each other. Enactors are going to be very specific to the prefernece they respond to. That
+makes it a little hard to explain how to write an Enactor; they're all different.
+
+We'll create an enactor for the XXX and point out the parts that are going to be common to any Enactor.
+
+points to make:
+- enactors are not associated with panels; they're associated with preferences
+- enactors are associated with the preference in the auxSchema, in the same way as panels are
+- the grade is specified using the type, as with panels
+    - sometimes, that's all that's needed in the auxSchema
+gradeNames: ["fluid.prefs.enactor"] plus other grades, if necessary (e.g. viewComponent)
+- required: preferenceMap block
+- required: modelListeners block to identify the main action to take when the model changes
+    typically calls a method on the component with new model value as arg
+        method is typically an invoker that adds other args
+
+what was the process for explaining panels?
+1- the panel grade itself
+2- addition of panel to auxSchema
+
+### Creating the Enactor ###
+
+### Adding the Enactor to the Editor ###
+
+Q: what about enactors when the tool isn't present?
+   how does gpii work with enactors? does it, even?
+
+Thought: Infusion-based enactors are really only relevant for web apps?
+
+use case: heated seats
+a heated seats "enactor" probably wouldn't use Infusion at all; it would use whatever was internal
+to the car's software, wouldn't it? and how it detects changes in the pref would be dependent on
+how the prefs are actually persisted in the car, wouldn't it?
+
 ## Coming Soon: ##
 Information about
-* Enactors
 * More complicated Panels
 * Localization
 * Design consideration
