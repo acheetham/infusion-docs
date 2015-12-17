@@ -767,11 +767,23 @@ radioVolume: {
 }
 ```
 
+## Localization ##
+
+Our flying car's preference editor is shaping up nicely, but you VP International Sales reminds you
+that the car sells in many different countries, so the interface will need to be translated into
+many languages. How do you make that easier?
+
+Infusion and the Preferences Framework provide all the supports necessary to internationalize a
+preferences editor.
+
+By moving all of the human-readable strings into
+separate files, and letting the editor load those files in programmatically. Then you can translate
+the content of the files, and simply load the appropriate language version.
+
 ## Coming Soon: ##
 Information about
 * Enactors
 * More complicated Panels
-* Localization
 * Design consideration
 * Persistence
 * Case studies
